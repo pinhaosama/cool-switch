@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root { 
+    --sh: 50px;
+    --sw: 100px;
+    --darkBackground: #07006e;
+    --lightBackground: #2395ff;
+    --moon: #ffffb6;
+    --sun: yellow;
+    --tran: 01s;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: var(--sw);
+    height: var(--sh);
+    margin: 20px;
+}
+
+input{
+    display: none;
+}
+
+.slider {
+    background-color: var(--darkBackground);
+    position: absolute;
+    cursor: pointer;
+    border-radius: 25px;
+    height: var(--sh);
+    width: var(--sw);
+    transition: var(--tran);
+    overflow: hidden;
+    box-shadow: inset 0px 1px 2px 4px rgba(0, 0, 0, 30%);
+}
+
+.ball {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: calc(var(--sh) - 20px);
+    width: calc(var(--sh) - 20px);
+    border-radius: calc(calc(var(--sh) - 10px) / 2);
+    background-color: var(--darkBackground);
+    transition: var(--tran);
+    box-shadow: inset 8px -4px 0px 0px var(--moon);
+
+}
+
+.cloud {
+    transform: translateY(100%);
+    position: absolute;
+    top: 12px;
+    left: -40px;
+    height: 50px;
+    transition: var(--tran);
+}
+
+.stars {
+    translate: 0;
+    transition: var(--tran);
+    .star4 {
+        position: absolute;
+        left: 67px;
+        top: 30px;
+        border-radius: 1px;
+        background-color: white;
+        height: 2px; width: 2px;
+    }
+    .star0 {
+        position: absolute;
+        left: 55px;
+        top: 38px;
+        border-radius: 2px;
+        background-color: white;
+        height: 4px; width: 4px;
+    }
+    .star1 {
+        position: absolute;
+        left: 78px;
+        top: 23px;
+        border-radius: 1.5px;
+        background-color: white;
+        height: 3px; width: 3px;
+    }
+    .star2 {
+        position: absolute;
+        left: 70px;
+        top: 8px;
+        border-radius: 1.5px;
+        background-color: white;
+        height: 3px; width: 3px;
+    }
+    .star3 {
+        position: absolute;
+        left: 53px;
+        top: 12px;
+        border-radius: 2px;
+        background-color: white;
+        height: 4px; width: 4px;
+    }
+}
+
+input:checked + .slider {
+    background-color: var(--lightBackground);
+    .stars {
+        translate: 100%;
+    }
+    .cloud {
+        transform: translateY(0);
+        left: 3px;
+    }
+    .ball {
+        translate: 50px;
+        background-color: var(--sun);
+        filter: drop-shadow(0px 0px 10px white);
+        box-shadow: inset 30px 10px 10px 10px var(--sun);
+    }
+}
